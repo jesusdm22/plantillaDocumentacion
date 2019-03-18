@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>PHP 7.2 Installation on CentOS 7.5</title>
+    <meta charset="utf-8">
+    <meta lang="es">
+	<!--TODO ESTILOS-->
+	<!--<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/my_style.css">
+    <!--TODO SCRIPTS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bootstrap4/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--TODO NAVBAR-->
+   <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">CentOS</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">PHP 7.x</a>
+            </div>
+        </div>
+    </nav><br>
+
+		<!--TODO TARIFAS-->
+        <div class="container">
+            <!--Titulo-->
+            <h3>Instalación de PHP 7.x en CentOS 7.5</h3><br>
+		    <div class="row">
+                <ol>
+                    <a href="#agregar"><li >Agregar repositorios</li></a>
+                    <a href="#acceder"><li>Acceder al paquete de PHP.</li></a>
+                    <a href="#instalar"><li>Instalación de paquetes más comunes.</li></a>
+                    <a href="#verificar"><li>Verificación de la instalación</li></a>
+                </ol>
+            
+
+            <!--Agregar repositorios-->
+            <div class="col-md-12" id="agregar">
+                <br><br>
+                <h4 id="agregarText">Agregar repositorios</h4>
+                    <p>Desafornutadamente, por defecto, CentOS no tiene acceso a las nuevas versiones de PHP.
+                    ¿Cómo hacemos para instalarlo?<br>
+
+                    Para ello, lo primero será agregar los repositorios EPEL y Remi, los cuales sí tienen acceso
+                    a estos paquetes.
+                    <br><br>
+                    <code>
+                        yum install epel-release yum-utils<br>
+                        &nbsp;yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+                    </code>
+                    <br><br>
+                    Cuando tengamos los paquetes instalados, procederemos al siguiente apartado, decirle a Remi que nos de acceso a los paquetes de PHP para poder instalarlos.
+                    </p>
+            </div>
+
+            <!--Acceso a repositorios-->
+            <div class="col-md-12" id="acceder">
+                <br><br>
+                <h4>Acceder al paquete de PHP 7.2</h4>
+                    <p>
+                    Bien, ahora, ya tenemos en nuestro CentOS los repositorios necesarios para poder realizar la descarga e instalación de la nueva versión de PHP.<br>
+                    Ejecutaremos: <br><br>
+                    <code>
+                        yum-config-manager --enable remi-php72
+                    </code>
+                    <br><br>
+                    Listo, Remi ya permite el acceso a los paquetes de PHP.
+
+                    </p>
+            </div>
+
+            <!--Proceso de instalación-->
+            <div class="col-md-12" id="instalar">
+                <br><br>
+                <h4>Proceso de instalación</h4>
+                    <p>
+                    Ahora se procede con la instalación de los paquetes. Instalaremos los paquetes más comunes necesarios para el correcto funcionamiento de PHP.<br>
+                    Para ello: <br><br>
+                    <code>
+                       yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
+                    </code>
+                    <br><br>
+                    El servidor irá pidiendo confirmación de descarga e instalación por cada paquete, para permitir que éstos paquetes sean instalados, tendremos que confirmarlo pulsando la tecla "Y" seguida de "Enter" cada vez que nos pida confirmación.
+
+                    </p>
+            </div>
+
+            <!--Verificar la instalación-->
+            <div class="col-md-12" id="verificar">
+                <br><br>
+                <h4>Verificación</h4>
+                    <p>
+                    PHP 7.2 se encuentra ahora instalado en nuestra máquina. Para que los cambios surtan efectos, tenemos que reiniciar el servicio web Apache <br><br>
+                    <code>
+                       systemctl restart httpd
+                    </code>
+                    <br><br>
+                    Cuando lo reiniciemos, los cambios de PHP se habrán aplicado y la nueva versión ya estará activa en nuestro servidor, pero... ¿cómo lo comprobamos?
+                    Ejecutamos la línea:<br><br>
+                    <code>
+                       php -v
+                    </code>
+                    <br><br>
+                    Esta línea nos muestra la versión de PHP por pantalla.<b>&nbsp;¡Listo! PHP 7.x está ahora funcionando en su servidor.</b><br>
+                    </p>
+            </div>
+
+
+        </div>
+        <!--TODO CAMBIAR IDIOMA-->
+        <br>
+        <h6>
+			<br><br><p>Jesús Díaz Muñoz || © <script type="text/javascript">document.write(new Date().getFullYear())</script> </p>
+        </h6>
+</body>
+</html>

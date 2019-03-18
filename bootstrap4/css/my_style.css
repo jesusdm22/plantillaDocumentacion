@@ -1,0 +1,20 @@
+/*------CLASSES------*/
+
+.card-block:hover {
+    border: 1px solid #0275D8;
+}
+
+.ico {
+    width:30px;
+    height:16px;
+}
+
+.nav-item:hover {
+	color: blue;
+}
+
+/*------ELEMENTS------*/
+
+h6 {
+    text-align: center;
+}
